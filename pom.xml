@@ -5,7 +5,7 @@
 	<artifactId>spring5-mvc-maven-xml-hello-world</artifactId>
 	<packaging>war</packaging>
 	<version>1.2</version>
-	<name>spring3 mvc maven</name>
+	<name>spring5 mvc maven</name>
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
