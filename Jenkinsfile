@@ -78,5 +78,12 @@ pipeline {
                 }
             }
         }
+        stage ("deploy") {
+            steps {
+                script {
+                    sh "curl http://blackhole.yaseenins.com:8081/repository/maven_spring4/com/yaseen/spring5-mvc-maven-xml-hello-world/1.3/spring5-mvc-maven-xml-hello-world-1.3.war -o /var/lib/tomcat9/webapps/spring5.war"
+                }
+            }
+        }
     }
 }
