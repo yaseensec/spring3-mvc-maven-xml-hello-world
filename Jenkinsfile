@@ -4,7 +4,7 @@ pipeline {
     }
     tools {
         // Note: this should match with the tool name configured in your jenkins instance (JENKINS_URL/configureTools/)
-        maven "Maven3"
+        maven "Maven"
     }
     environment {
         // This can be nexus3 or nexus2
@@ -14,7 +14,7 @@ pipeline {
         // Where your Nexus is running
         NEXUS_URL = "localhost:8081"
         // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "dvs-evn-spring"
+        NEXUS_REPOSITORY = "latest-spring3"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus_credentials"
     }
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     // Let's clone the source
-                    git 'https://github.com/ybmadhu/spring3-mvc-maven-xml-hello-world.git';
+                    git 'https://github.com/yaseensec/spring5-mvc-maven-xml-hello-world.git';
                 }
             }
         }
@@ -81,7 +81,7 @@ pipeline {
         stage ("deploy") {
             steps {
                 script {
-                    sh "curl http://blackhole.yaseenins.com:8081/repository/maven_spring4/com/yaseen/spring5-mvc-maven-xml-hello-world/1.3/spring5-mvc-maven-xml-hello-world-1.3.war -o /var/lib/tomcat9/webapps/spring5.war"
+                    sh "curl http://localhost:8081/repository/latest-spring3/com/yaseen/spring5-mvc-maven-xml-hello-world/1.3/spring5-mvc-maven-xml-hello-world-1.3.war -o /var/lib/tomcat9/webapps/spring5.war"
                 }
             }
         }
