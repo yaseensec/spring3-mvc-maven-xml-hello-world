@@ -32,7 +32,7 @@ pipeline {
                 script {
                     // If you are using Windows then you should use "bat" step
                     // Since unit testing is out of the scope we skip them
-                    bat(/${MAVEN_HOME}\bin\mvn -Dmaven.test.failure.ignore clean package/)
+                    sh "mvn -Dmaven.test.failure.ignore clean package"
                 }
             }
         }
@@ -75,13 +75,6 @@ pipeline {
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }
-                }
-            }
-        }
-        stage ("deploy") {
-            steps {
-                script {
-                    sh "curl http://localhost:8081/repository/latest-spring3/com/yaseen/spring5-mvc-maven-xml-hello-world/1.3/spring5-mvc-maven-xml-hello-world-1.3.war -o /var/lib/tomcat9/webapps/spring5.war"
                 }
             }
         }
